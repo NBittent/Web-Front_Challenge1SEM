@@ -1,5 +1,5 @@
 // Componente de cabeçalho — recebe dados do usuário via props (pai → filho)
-export default function Header({ userName, totalPoints, level }) {
+export default function Header({ userName, totalPoints, level, onProfileClick }) {
   return (
     <header className="header">
       <div className="header-brand">
@@ -15,6 +15,9 @@ export default function Header({ userName, totalPoints, level }) {
           <span className="points-value">{totalPoints}</span>
           <span className="points-label">pts</span>
         </div>
+        <button className="profile-btn" onClick={onProfileClick}>
+          Perfil
+        </button>
       </div>
     </header>
   );

@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import MissionCard from "./components/MissionCard";
 import HealthMetrics from "./components/HealthMetrics";
 import Leaderboard from "./components/Leaderboard";
+import ProfilePage from "./components/ProfilePage";
 import missionsData from "./data/missions";
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
   const [userName] = useState(() => {
     return localStorage.getItem("careplus_user") || "Usuário Care Plus";
   });
+  const [currentPage, setCurrentPage] = useState("dashboard");
 
   // ── Persiste no localStorage sempre que missões ou pontos mudam ────────
   useEffect(() => {
@@ -48,6 +50,10 @@ export default function App() {
     localStorage.removeItem("careplus_points");
   }
 
+  function handleChangePage(page) {
+    setCurrentPage(page);
+  }
+
   // ── Métricas simuladas (virão do ESP32 via MQTT na Sprint 3) ──────────
   const metrics = {
     heartRate:   72,
@@ -62,36 +68,55 @@ export default function App() {
   return (
     <div className="app-wrapper">
       {/* Cabeçalho recebe dados do usuário via props (pai → filho) */}
-      <Header userName={userName} totalPoints={totalPoints} level={level} />
+      <Header
+        userName={userName}
+        totalPoints={totalPoints}
+        level={level}
+        onProfileClick={() => handleChangePage("profile")}
+      />
 
       <main className="main-content">
-        {/* Métricas do wearable — pai envia dados como props para o filho */}
-        <HealthMetrics metrics={metrics} />
+        {currentPage === "profile" ? (
+          <ProfilePage
+            userName={userName}
+            totalPoints={totalPoints}
+            level={level}
+            completedCount={completedCount}
+            missionsCount={missions.length}
+            metrics={metrics}
+            onBack={() => handleChangePage("dashboard")}
+          />
+        ) : (
+          <>
+            {/* Métricas do wearable — pai envia dados como props para o filho */}
+            <HealthMetrics metrics={metrics} />
 
-        {/* Seção de missões gamificadas */}
-        <section className="missions-section">
-          <div className="section-header">
-            <h2>Missões do Dia</h2>
-            <span className="badge">{completedCount}/{missions.length} concluídas</span>
-          </div>
+            {/* Seção de missões gamificadas */}
+            <section className="missions-section">
+              <div className="section-header">
+                <h2>Missões do Dia</h2>
+                <span className="badge">{completedCount}/{missions.length} concluídas</span>
+              </div>
 
-          <div className="missions-grid">
-            {missions.map(mission => (
-              <MissionCard
-                key={mission.id}
-                mission={mission}
-                onToggle={handleToggleMission}
-              />
-            ))}
-          </div>
+              <div className="missions-grid">
+                {missions.map(mission => (
+                  <MissionCard
+                    key={mission.id}
+                    mission={mission}
+                    onToggle={handleToggleMission}
+                  />
+                ))}
+              </div>
 
-          <button className="reset-btn" onClick={handleReset}>
-            Reiniciar Missões
-          </button>
-        </section>
+              <button className="reset-btn" onClick={handleReset}>
+                Reiniciar Missões
+              </button>
+            </section>
 
-        {/* Leaderboard com dados simulados */}
-        <Leaderboard currentPoints={totalPoints} userName={userName} />
+            {/* Leaderboard com dados simulados */}
+            <Leaderboard currentPoints={totalPoints} userName={userName} />
+          </>
+        )}
       </main>
 
       <Footer />
