@@ -1,0 +1,32 @@
+{
+  "missoes": [
+    { "id": 1, "emoji": "🚶", "titulo": "Caminhar 5.000 passos",        "xp": 30, "categoria": "movimento"     },
+    { "id": 2, "emoji": "💧", "titulo": "Beber 2 litros de água",       "xp": 20, "categoria": "hidratacao"    },
+    { "id": 3, "emoji": "😴", "titulo": "Dormir 7+ horas",              "xp": 25, "categoria": "sono"          },
+    { "id": 4, "emoji": "🧘", "titulo": "10 min de alongamento",        "xp": 15, "categoria": "movimento"     },
+    { "id": 5, "emoji": "🥗", "titulo": "Registrar refeição saudável",  "xp": 20, "categoria": "nutricao"      },
+    { "id": 6, "emoji": "🏃", "titulo": "Correr 2km",                   "xp": 40, "categoria": "movimento"     },
+    { "id": 7, "emoji": "📊", "titulo": "Verificar métricas de saúde",  "xp": 10, "categoria": "monitoramento" },
+    { "id": 8, "emoji": "🧠", "titulo": "15 min de meditação",          "xp": 25, "categoria": "mente"         }
+  ],
+  "badges": [
+    { "id": 1, "emoji": "🌱", "nome": "Primeiro Passo",       "desc": "Completou sua primeira missão",    "xpMin": 0,  "streakMin": 0, "missoesMin": 1 },
+    { "id": 2, "emoji": "🔥", "nome": "Consistência Inicial", "desc": "Manteve streak por 3 dias",        "xpMin": 0,  "streakMin": 3, "missoesMin": 0 },
+    { "id": 3, "emoji": "⭐", "nome": "Usuário Engajado",     "desc": "Acumulou 200 XP",                 "xpMin": 200,"streakMin": 0, "missoesMin": 0 },
+    { "id": 4, "emoji": "💪", "nome": "Atleta Cardio",        "desc": "Completou 5 missões de movimento", "xpMin": 0,  "streakMin": 0, "missoesMin": 5 },
+    { "id": 5, "emoji": "🏆", "nome": "Campeão do Dia",       "desc": "Completou todas as 8 missões",    "xpMin": 0,  "streakMin": 0, "missoesMin": 8 }
+  ],
+  "recompensas": [
+    { "id": 1, "emoji": "🏥", "nome": "Desconto em consulta",         "custo": 100, "desc": "10% de desconto na próxima consulta médica"  },
+    { "id": 2, "emoji": "🔬", "nome": "Desconto em exame preventivo", "custo": 150, "desc": "Exame preventivo com 20% de desconto"         },
+    { "id": 3, "emoji": "🧘", "nome": "Voucher wellness",             "custo": 200, "desc": "Sessão de yoga ou pilates gratuita"           },
+    { "id": 4, "emoji": "🥦", "nome": "Orientação nutricional",       "custo": 250, "desc": "Consulta com nutricionista inclusa"           }
+  ],
+  "leaderboard": [
+    { "id": 1, "nome": "Ana Silva",     "avatar": "AS", "xp": 520, "voce": false },
+    { "id": 2, "nome": "Carlos Mendes", "avatar": "CM", "xp": 480, "voce": false },
+    { "id": 3, "nome": "Mariana Costa", "avatar": "MR", "xp": 340, "voce": true  },
+    { "id": 4, "nome": "Pedro Alves",   "avatar": "PA", "xp": 290, "voce": false },
+    { "id": 5, "nome": "Julia Torres",  "avatar": "JT", "xp": 210, "voce": false }
+  ]
+}
